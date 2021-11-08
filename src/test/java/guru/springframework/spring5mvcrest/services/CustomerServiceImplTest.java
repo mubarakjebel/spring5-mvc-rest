@@ -4,6 +4,7 @@ import guru.springframework.spring5mvcrest.api.v1.mapper.CustomerMapper;
 import guru.springframework.spring5mvcrest.api.v1.model.CustomerDTO;
 import guru.springframework.spring5mvcrest.domain.Customer;
 import guru.springframework.spring5mvcrest.repositories.CustomerRepository;
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -24,15 +25,13 @@ class CustomerServiceImplTest {
 
     CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
-    CustomerServiceImpl customerService;
+    CustomerService customerService;
 
     @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
-        customerService=new CustomerServiceImpl();
-        customerService.setCustomerMapper(customerMapper);
-        customerService.setCustomerRepository(customerRepository);
-        // customerService = new CustomerServiceImpl(customerMapper, customerRepository);
+
+        customerService = new CustomerServiceImpl(customerMapper, customerRepository);
     }
 
     @Test
