@@ -5,7 +5,6 @@ import guru.springframework.spring5mvcrest.api.v1.model.CustomerDTO;
 import guru.springframework.spring5mvcrest.controllers.v1.CustomerController;
 import guru.springframework.spring5mvcrest.domain.Customer;
 import guru.springframework.spring5mvcrest.repositories.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -86,9 +85,8 @@ public class CustomerServiceImpl implements CustomerService {
             CustomerDTO returnDto = customerMapper.customerToCustomerDTO(customerRepository.save(customer));
             returnDto.setCustomerUrl(getCustomerUrl(id));
 
-
             return returnDto;
-        }).orElseThrow(ResourceNotFoundException::new); //todo implement better exception handling;
+        }).orElseThrow(ResourceNotFoundException::new);
     }
 
     private String getCustomerUrl(Long id) {

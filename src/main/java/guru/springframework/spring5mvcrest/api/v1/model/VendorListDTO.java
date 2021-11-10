@@ -1,0 +1,16 @@
+package guru.springframework.spring5mvcrest.api.v1.model;
+
+import guru.springframework.spring5mvcrest.api.v1.model.VendorDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class VendorListDTO {
+
+    List<VendorDTO> vendors;
+}
