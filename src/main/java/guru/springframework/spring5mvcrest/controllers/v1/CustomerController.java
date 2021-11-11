@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Api(description = "This is my customer controller")
+@Api(description = "This is my customer controller") // this line is added for swagger
 @Controller
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -22,7 +22,8 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
-@ApiOperation(value = "This will get a list of customers.", notes = "These are notes for customer API.")
+
+    @ApiOperation(value = "View list of customers.", notes = "These are notes for customer API.")// this line is added for swagger
     @GetMapping
     public ResponseEntity<CustomerListDTO> getAllCustomers() {
 
@@ -54,17 +55,17 @@ public class CustomerController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<CustomerDTO> patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO){
+    public ResponseEntity<CustomerDTO> patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
 
         return new ResponseEntity<CustomerDTO>(customerService.saveCustomerByDTO(id, customerDTO),
                 HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomerById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteCustomerById(@PathVariable Long id) {
 
         customerService.deleteCustomerById(id);
 
-      return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
