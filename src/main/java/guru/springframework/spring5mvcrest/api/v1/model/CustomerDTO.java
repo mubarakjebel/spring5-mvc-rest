@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 public class CustomerDTO {
 
-    @ApiModelProperty(value = "This is First Name", required = true)
+    @ApiModelProperty(value = "This is First Name", required = true)// this line is added for swagger documentation
     private String firstname;
 
-    @ApiModelProperty(required = true)
+    @ApiModelProperty(required = true)// this line is added for swagger documentation
     private String lastname;
+
     @JsonProperty("customer_url")
     private String customerUrl;
 }
